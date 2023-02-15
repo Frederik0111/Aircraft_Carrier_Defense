@@ -4,14 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
     <title>Aircraft Carrier Defense</title>
 </head>
 <body>
-    <style>
-        body {
-            background-image: url('./images/backgroundsea.jpg');
-        }
-    </style>
-    
+    <div id="screen">
+            <div id="game">
+                <div id="game_background">
+                    
+                </div>
+                <div id="game_elements">
+                    <div id="carrier" #carrier_container>
+                        <img src="./images/carrier.png" #carrier_sprite>
+                    </div>
+                    <div id="japfighter" #japfighter_container>
+                        <img src="./images/jap_plane.png" #japplane_sprite>
+                    </div>
+                    <div id="japbomber" #japbomber_container>
+                        <img src="./images/jap_bomber.png" #japbomber_sprite>
+                    </div>
+                    <div id="usfighter" #usfighter_container>
+                        <img src="./images/us_plane.png" #usplane_sprite>
+                    </div>
+                    <div id="usbomber" #usbomber_container>
+                        <img src="./images/us_bomber.png" #usbomber_sprite>
+                    </div>
+                </div>
+                <div id="game_foreground">
+
+                </div>
+                <div id="game_ui">
+                    <div id="score_board">
+
+                    </div>
+                    <div id="life_board">
+                        <img src="./images/full_heart.png" #heart>
+                        <img src="./images/empty_heart.png" #heart>
+                    </div>
+                    <div id="time_board">
+
+                    </div>
+                </div>
+            </div>
+        <div id="start">
+
+        </div>
+        <div id="game_over">
+
+        </div>
+        <div id="level_complete">
+
+        </div>
+    </div>
 </body>
 </html>

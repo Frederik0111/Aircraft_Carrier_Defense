@@ -1,0 +1,24 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#screen {
+    grid-template-columns: repeat(1,1fr);
+    background-color: red;
+}
+
+#start {
+    
+}
+
+#game_over {
+
+}
+
+#level_complete {
+
+}
+
+#game_background {
+    background-image: url(./images/backgroundsea.jpg);
+}
