@@ -5,8 +5,7 @@ body {
 #screen {
     /* grid-template-columns: repeat(1,1fr); */
     background-image: url(./images/backgroundsea.jpg);
-    outline: 10px red;
-    /* background: rgba(255,0,0,.25); */
+    margin: 0;
 }
 
 #start {
@@ -15,8 +14,7 @@ body {
 }
 
 #game_over {
-    outline: 10px red;
-    background: rgba(255,0,0,.25);
+    background: rgba(0, 255, 76, 0.25);
 }
 
 #level_complete {
