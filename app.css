@@ -1,12 +1,11 @@
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
 }
 
 #screen {
-    /* grid-template-columns: repeat(1,1fr); */
     background-image: url(./images/backgroundsea.jpg);
     outline: 10px red;
-    /* background: rgba(255,0,0,.25); */
 }
 
 #start {
@@ -27,10 +26,75 @@ body {
 #game_background {
     outline: 10px red;
     background: rgba(255,0,0,.25);
-    /* background-image: url(./images/backgroundsea.jpg); */
 }
 
 .heart {
     max-width: 50px;
     max-height: 50px;
 }
+
+#japfighter {
+    animation-name: enemy_fighter;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+}
+
+@keyframes enemy_fighter {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(1000px,0);
+    }
+}
+
+#usfighter {
+    animation-name: ally_fighter;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+@keyframes ally_fighter {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(1000px,0);
+    }
+}
+
+#japbomber {
+    animation-name: enemy_bomber;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes enemy_bomber {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(1000px,0);
+    }
+}
+
+#usbomber {
+    animation-name: ally_bomber;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes ally_bomber {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(1000px,0);
+    }
+}
+
+
