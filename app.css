@@ -1,10 +1,11 @@
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 0;
+    background-image: url(./images/backgroundsea.jpg);
+    background-repeat: no-repeat;
 }
 
 #screen {
-    background-image: url(./images/backgroundsea.jpg);
     outline: 10px red;
 }
 
@@ -29,8 +30,15 @@ body {
 }
 
 .heart {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 100px;
+    max-height: 100px;
+    text-align: right;
+}
+
+#carrier {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #japfighter {
