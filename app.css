@@ -30,47 +30,88 @@ body {
 }
 
 .heart {
-    max-width: 100px;
-    max-height: 100px;
-    text-align: right;
+    display: inline-block;
+    max-width: 5%;
+    max-height: 5%;
+}
+
+.empty_heart {
+    display: inline-block;
+    max-width: 5%;
+    max-height: 5%;
+    display: none;
 }
 
 #carrier {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+}
+
+#explosions {
+    display: none;
 }
 
 #japfighter {
     animation-name: enemy_fighter;
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in;
+    animation-timing-function: linear;
+    cursor: pointer;
 }
 
 @keyframes enemy_fighter {
-    0% {
-        transform: translate(0,0);
-    }
-    100% {
-        transform: translate(1000px,0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20vw, -10vh);
+  }
+  50% {
+    transform: translate(40vw, 0);
+  }
+  75% {
+    transform: translate(60vw, 10vh);
+  }
+  85% {
+    transform: translate(75vw, 5vh);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
 }
 
 #usfighter {
     animation-name: ally_fighter;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
+    cursor: pointer;
 }
 
 @keyframes ally_fighter {
-    0% {
-        transform: translate(0,0);
-    }
-    100% {
-        transform: translate(1000px,0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20vw, -10vh);
+  }
+  50% {
+    transform: translate(40vw, 0);
+  }
+  75% {
+    transform: translate(60vw, 10vh);
+  }
+  85% {
+    transform: translate(75vw, 5vh);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
 }
 
 #japbomber {
@@ -78,31 +119,54 @@ body {
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    cursor: pointer;
 }
 
 @keyframes enemy_bomber {
-    0% {
-        transform: translate(0,0);
-    }
-    100% {
-        transform: translate(1000px,0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20vw, -10vh);
+  }
+  50% {
+    transform: translate(40vw, 0);
+  }
+  75% {
+    transform: translate(60vw, 10vh);
+  }
+  85% {
+    transform: translate(75vw, 5vh);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
 }
-
 #usbomber {
     animation-name: ally_bomber;
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    cursor: pointer;
 }
 
 @keyframes ally_bomber {
-    0% {
-        transform: translate(0,0);
-    }
-    100% {
-        transform: translate(1000px,0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(20vw, -10vh);
+  }
+  50% {
+    transform: translate(40vw, 0);
+  }
+  75% {
+    transform: translate(60vw, 10vh);
+  }
+  85% {
+    transform: translate(75vw, 5vh);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
 }
-
-
