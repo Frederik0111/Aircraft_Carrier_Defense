@@ -1,36 +1,33 @@
 const japfighter = document.getElementById("japfighter");
+let explosionInterval;
 
-japfighter.onclick = function () {
-  japfighter.style.background = 'url("./images/explosion1.png") 0 0 no-repeat';
-  setTimeout(() => {
-    japfighter.style.display = "none";
-  }, 2000);
-};
+japfighter.addEventListener("click", function (event) {
+  const x = event.clientX;
+  const y = event.clientY;
 
-const japbomber = document.getElementById("japbomber");
+  const explosion = document.createElement("div");
+  explosion.classList.add("explode");
+  explosion.style.left = x + "px";
+  explosion.style.top = y + "px";
 
-japbomber.onclick = function () {
-  japbomber.style.background = 'url("./images/explosion2.png") 0 0 no-repeat';
-  setTimeout(() => {
-    japbomber.style.display = "none";
-  }, 2000);
-};
+  document.body.appendChild(explosion);
 
-const usfighter = document.getElementById("usfighter");
-
-usfighter.onclick = function () {
-  usfighter.style.background = 'url("./images/explosion1.png") 0 0 no-repeat';
-  setTimeout(() => {
-    usfighter.style.display = "none";
-  }, 2000);
-};
-
-const usbomber = document.getElementById("usbomber");
-
-usbomber.onclick = function () {
-  usbomber.style.background = 'url("./images/explosion2.png") 0 0 no-repeat';
-  setTimeout(() => {
-    usbomber.style.display = "none";
-  }, 2000);
-};
-     
+  console.log("explosion added");
+  japfighter.style.opacity = 0;
+  clearInterval(explosionInterval);
+  explosionInterval = setInterval(function () {
+    explosion.remove();
+    setTimeout(function () {
+      const newExplosion = document.createElement("div");
+      newExplosion.classList.add("explode");
+      newExplosion.style.left = x + "px";
+      newExplosion.style.top = y + "px";
+      document.body.appendChild(newExplosion);
+    }, 200);
+  }, 4000);
+  setTimeout(function () {
+    console.log("Removing element");
+    japfighter.remove();
+    clearInterval(explosionInterval);
+  }, 2200);
+});
