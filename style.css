@@ -1,0 +1,367 @@
+body {
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h2 {
+    font-size: 6em;
+    margin: 0;
+}
+
+p {
+    text-align: center;
+    font-size: 1.3em;
+    margin: 1em 0;
+}
+
+#screen {
+    aspect-ratio: 16 / 9;
+
+    display: grid;
+    grid-template: 100% / 100%;
+}
+
+#game {
+    grid-area: 1 / 1;
+
+    display: grid;
+    grid-template: 100% / 100%;
+}
+
+#game_background {
+    grid-area: 1 /1;
+    background-image: url(./images/backgroundsea.jpg);
+}
+
+#game_elements {
+    grid-area: 1 /1;
+    overflow: hidden;
+    position: relative;
+}
+
+#game_over {
+    grid-area: 1 /1;
+    z-index: 999;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-image: url(./images/game_start.jpg);
+    color: gold;
+    text-shadow: 2px 2px black;
+}
+
+#level_complete,
+#start {
+    grid-area: 1 /1;
+    z-index: 999;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    color: gold;
+    text-shadow: 2px 2px black;
+}
+
+.hidden,
+#game_over.hidden,
+#level_complete.hidden,
+#game.hidden,
+#start.hidden {
+    display: none;
+}
+
+/* positioning elements */
+
+#carrier_container {
+    position: absolute;
+    top: 15vw;
+    right: 5vw;
+    padding-right: 5vw;
+}  
+
+#carrier_sprite {
+    scale: 1.5;
+}
+
+#japfighter_container {
+    position: absolute;
+    top: 20vw;
+}
+
+#japfighter_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+#japfighter2_container {
+    position: absolute;
+    top: 30vw;
+}
+
+#japfighter2_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+#japfighter3_container {
+    position: absolute;
+    top: 5vw;
+}
+
+#japfighter3_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+#japbomber_container {
+    position: absolute;
+    top: 25vw;
+}
+
+#japbomber_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+#usfighter_container {
+    position: absolute;
+    top: 15vw;
+}
+
+#usfighter_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+#heart_container {
+    position: absolute;
+    
+}
+
+#heart_sprite {
+    width: 100%;
+}
+
+/* position classes */
+.position1 {
+    top: 10vw;
+}
+
+.position2 {
+    top: 35vw;
+}
+
+.position3 {
+    top: 40vw;
+}
+
+.position4 {
+    top: 25vw;
+}
+
+.position5 {
+    top: 30vw;
+}
+
+/* UI */
+
+#game_ui {
+    position: absolute;
+    top: 2vw;
+    right: 1vw;
+    color: white;
+
+    font-size: 2em;
+
+    pointer-events: none;
+}
+
+#score_board {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.1em;
+    justify-items: end;
+    align-items: center;
+}
+
+#plane_count {
+    white-space: nowrap;
+    text-align: right;
+}
+
+#plane_image {
+    width: 1em;
+}
+
+#life_board {
+    margin-block-start: 0.2em;
+    display: grid;
+    grid-template-columns: 1.2em 1.2em 1.2em;
+}
+
+#life_board img {
+    width: 100%;
+}
+
+.full_heart {
+    filter: drop-shadow(0 0 2px yellow);
+}
+
+.broken_heart {
+    filter: grayscale(75%) blur(0.5px);
+}
+
+/* Animations */
+
+.flying {
+    animation-name: flying;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+}
+
+@keyframes flying {
+        0% {
+            left: -200px;
+        }
+        50% {
+            transform: translateY(-50%) rotate(-20deg);
+        }
+        100% {
+            left: calc(90% - 100px);
+            transform: translateY(-50%) rotate(0deg);
+        }
+    }
+
+.zoom_out {
+    animation-name: zoom_out;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoom_out {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.zoom_in {
+    animation-name: zoom_in;
+    animation-duration: 1.7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes zoom_in {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    90% {
+        transform: translate(100%, 0) scale(5) rotate(90deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100%, 0) scale(5) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+.spiral {
+    animation-name: spiral;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform-origin: 50% 150%;
+}
+
+@keyframes spiral {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        transform: rotate(720deg) scale(0);
+    }
+}
+
+.paused {
+    animation-play-state: paused;
+}
+
+@keyframes pulse_kf {
+    0% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse {
+    animation-name: pulse_kf;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
+
+button {
+    padding: 0.5em 1em;
+    font-size: 2em;
+    margin: auto;
+    background-color: #ffad01;
+    color: #fff4bf;
+    border: 10px solid #ffc72e;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Timer */
+
+#time_board {
+    position: relative;
+}
+
+#time_container {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 30/6;
+    border: 2px solid black;
+    background-color: rgba(208, 204, 204, 0.383);
+    top: 1.6vh;
+    right: 0.2vw;
+}
+
+#time_sprite {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: limegreen;
+    transform-origin: right;
+}
+
+.shrink {
+    animation-name: shrink_kf;
+    animation-duration: 30s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink_kf {
+    0% {
+        scale: 1 1;
+        background-color: limegreen;
+    }
+    50% {
+        background-color: rgb(255, 230, 0);
+    }
+    100% {
+        scale: 0 1;
+        background-color: red;
+    }
+}

@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="app.css">
     <title>Aircraft Carrier Defense</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./images/jap_plane.png" type="image/x-icon">
 </head>
+
 <body>
     <div id="screen">
             <div id="game">
-                <div id="game_background">
-                    
-                </div>
+                <div id="game_background"></div>
                 <div id="game_elements">
-                    <div id="carrier" #carrier_container>
-                        <img src="./images/carrier.png" #carrier_sprite>
+                    <div id="carrier_container">
+                        <img id="carrier_sprite" src="./images/carrier.png" alt="carrier">
                     </div>
-                    <div id="japfighter" #japfighter_container>
-                        <img src="./images/jap_plane.png" #japplane_sprite>
+                    <div id="japfighter_container">
+                        <img id="japfighter_sprite" src="./images/jap_plane.png" alt="japfighter">
                     </div>
-                    <div id="japbomber" #japbomber_container>
-                        <img src="./images/jap_bomber.png" #japbomber_sprite>
+                    <div id="japfighter2_container">
+                        <img id="japfighter_sprite" src="./images/jap_plane.png" alt="japfighter">
                     </div>
-                    <div id="usfighter" #usfighter_container>
-                        <img src="./images/us_plane.png" #usplane_sprite>
+                    <div id="japfighter3_container">
+                        <img id="japfighter_sprite" src="./images/jap_plane.png" alt="japfighter">
                     </div>
-                    <div id="usbomber" #usbomber_container>
-                        <img src="./images/us_bomber.png" #usbomber_sprite>
+                    <div id="japbomber_container">
+                        <img id="japbomber_sprite" src="./images/jap_bomber.png" alt="japbomber">
                     </div>
-                    <div id="explosions" #explosion_container>
-                        <img src="./images/explosion1.png" #explosion1_sprite>
-                        <img src="./images/explosion2.png" #explosion2_sprite> 
+                    <div id="usfighter_container">
+                        <img id="usfighter_sprite" src="./images/us_plane.png" alt="usfighter">
                     </div>
                 </div>
                 <div id="game_foreground">
@@ -39,29 +38,45 @@
                 </div>
                 <div id="game_ui">
                     <div id="score_board">
-
+                        <span id="plane_count">0</span>
+                        <img id="japfighter_image" src="./images/jap_plane.png">
                     </div>
                     <div id="life_board">
-                        <img src="./images/full_heart.png" class="heart">
-                        <img src="./images/full_heart.png" class="heart">
-                        <img src="./images/full_heart.png" class="heart">
-                        <img src="./images/empty_heart.png" class="empty_heart">
+                        <img id="heart1" src="./images/full_heart.png" class="full_heart">
+                        <img id="heart2" src="./images/full_heart.png" class="full_heart">
+                        <img id="heart3" src="./images/full_heart.png" class="full_heart">
                     </div>
-                    <div id="time_board">
-
+                      <div id="time_board">
+                        <div id="time_container">
+                            <div id="time_sprite" class=""></div>
                     </div>
                 </div>
             </div>
         <div id="start">
-
+            <h2>Aircraft Carrier Defense</h2>
+            <p>Shoot down at least 20 planes before they reach your aircraft carrier!</p>
+            <button id="btn_start" class="pulse">Start</button>
         </div>
-        <div id="game_over">
-
+        <div id="game_over" class="hidden">
+            <h2>Game Over</h2>
+            <p>Sorry, you only shot down <span id="game_over_planes">x</span> enemy planes!</p>
+            <p>You needed to shoot down at least 20 enemy planes</p>
+            <button id="btn_restart" class="pulse">Restart Game</button>
         </div>
-        <div id="level_complete">
-
+        <div id="level_complete" class="hidden">
+            <h2>Level Complete</h2>
+            <p>Congratulations! You survived and shot down <span id="level_complete_coins">x</span> planes!</p>
+            <button id="btn_go_to_start" class="pulse">Go to start</button>
         </div>
     </div>
-    <script src="app.js"></script>
+
+    <audio id="sound_battle" src="./sounds/sounds_battle.mp3"></audio>
+    <audio id="sound_plus" src="./sounds/sounds_plus.mp3"></audio>
+    <audio id="sound_wrong" src="./sounds/sounds_wrong.mp3"></audio>
+    <audio id="sound_success" src="./sounds/sounds_shortSuccess.mp3"></audio>
+    <audio id="sound_victory" src="./sounds/sounds_victory.mp3"></audio>
+    <audio id="sound_game_over" src="./sounds/sounds_gameOver.mp3"></audio>
+    <script src="script.js"></script>
 </body>
+
 </html>
