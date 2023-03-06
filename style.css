@@ -113,7 +113,17 @@ p {
     transform: rotate(90deg);
 }
 
-#japbomber_container {
+#japfighter4_container {
+    position: absolute;
+    top: 25vw;
+}
+
+#japfighter4_sprite {
+    width: 200%;
+    transform: rotate(90deg);
+}
+
+/* #japbomber_container {
     position: absolute;
     top: 25vw;
 }
@@ -121,7 +131,7 @@ p {
 #japbomber_sprite {
     width: 200%;
     transform: rotate(90deg);
-}
+} */
 
 #usfighter_container {
     position: absolute;
@@ -215,7 +225,7 @@ p {
 
 .flying {
     animation-name: flying;
-    animation-duration: 6s;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     cursor: pointer;

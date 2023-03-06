@@ -26,9 +26,12 @@
                     <div id="japfighter3_container">
                         <img id="japfighter_sprite" src="./images/jap_plane.png" alt="japfighter">
                     </div>
-                    <div id="japbomber_container">
-                        <img id="japbomber_sprite" src="./images/jap_bomber.png" alt="japbomber">
+                    <div id="japfighter4_container">
+                        <img id="japfighter_sprite" src="./images/jap_plane.png" alt="japfighter">
                     </div>
+                    <!-- <div id="japbomber_container">
+                        <img id="japbomber_sprite" src="./images/jap_bomber.png" alt="japbomber">
+                    </div> -->
                     <div id="usfighter_container">
                         <img id="usfighter_sprite" src="./images/us_plane.png" alt="usfighter">
                     </div>
@@ -54,26 +57,25 @@
             </div>
         <div id="start">
             <h2>Aircraft Carrier Defense</h2>
-            <p>Shoot down at least 20 planes before they reach your aircraft carrier!</p>
+            <p>Shoot down at least 30 enemy planes before they reach your aircraft carrier!</p>
             <button id="btn_start" class="pulse">Start</button>
         </div>
         <div id="game_over" class="hidden">
             <h2>Game Over</h2>
             <p>Sorry, you only shot down <span id="game_over_planes">x</span> enemy planes!</p>
-            <p>You needed to shoot down at least 20 enemy planes</p>
+            <p>You needed to shoot down at least 30 enemy planes</p>
             <button id="btn_restart" class="pulse">Restart Game</button>
         </div>
         <div id="level_complete" class="hidden">
             <h2>Level Complete</h2>
-            <p>Congratulations! You survived and shot down <span id="level_complete_coins">x</span> planes!</p>
+            <p>Congratulations! You survived and shot down <span id="level_complete_planes">x</span> planes!</p>
             <button id="btn_go_to_start" class="pulse">Go to start</button>
         </div>
     </div>
 
     <audio id="sound_battle" src="./sounds/sounds_battle.mp3"></audio>
-    <audio id="sound_plus" src="./sounds/sounds_plus.mp3"></audio>
+    <audio id="sound_gunShot" src="./sounds/sounds_gunShot.mp3"></audio>
     <audio id="sound_wrong" src="./sounds/sounds_wrong.mp3"></audio>
-    <audio id="sound_success" src="./sounds/sounds_shortSuccess.mp3"></audio>
     <audio id="sound_victory" src="./sounds/sounds_victory.mp3"></audio>
     <audio id="sound_game_over" src="./sounds/sounds_gameOver.mp3"></audio>
     <script src="script.js"></script>

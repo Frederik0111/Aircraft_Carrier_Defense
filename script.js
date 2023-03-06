@@ -66,27 +66,36 @@ function startGame() {
   // Registrer click
   document
     .querySelector("#japfighter_container")
-    .addEventListener("click", clickCoin);
+    .addEventListener("click", clickPlane);
   document
     .querySelector("#japfighter2_container")
-    .addEventListener("click", clickCoin);
+    .addEventListener("click", clickPlane);
   document
     .querySelector("#japfighter3_container")
-    .addEventListener("click", clickCoin);
+    .addEventListener("click", clickPlane);
+  document
+    .querySelector("#japfighter4_container")
+    .addEventListener("click", clickPlane);
   document
     .querySelector("#usfighter_container")
-    .addEventListener("click", clickBomb);
+    .addEventListener("click", clickAlly);
 
-  // Registrer når bunden rammes
+  // Registrer når flyene rammer højre side
   document
     .querySelector("#japfighter_container")
-    .addEventListener("animationiteration", coinRestart);
+    .addEventListener("animationiteration", planeRestart);
   document
     .querySelector("#japfighter2_container")
-    .addEventListener("animationiteration", coinRestart);
+    .addEventListener("animationiteration", planeRestart);
   document
     .querySelector("#japfighter3_container")
-    .addEventListener("animationiteration", coinRestart);
+    .addEventListener("animationiteration", planeRestart);
+  document
+    .querySelector("#japfighter4_container")
+    .addEventListener("animationiteration", planeRestart);
+  // document
+  //   .querySelector("#japbomber_container")
+  //   .addEventListener("animationiteration", planeRestart);
 }
 
 function startAllAnimations() {
@@ -94,73 +103,80 @@ function startAllAnimations() {
   document.querySelector("#japfighter_container").classList.add("flying");
   document.querySelector("#japfighter2_container").classList.add("flying");
   document.querySelector("#japfighter3_container").classList.add("flying");
+  document.querySelector("#japfighter4_container").classList.add("flying");
   document.querySelector("#usfighter_container").classList.add("flying");
+  // document.querySelector("#japbomber_container").classList.add("flying");
 
   // Sæt position klasser
   document.querySelector("#japfighter_container").classList.add("position1");
   document.querySelector("#japfighter2_container").classList.add("position2");
   document.querySelector("#japfighter3_container").classList.add("position3");
+  document.querySelector("#japfighter4_container").classList.add("position5");
   document.querySelector("#usfighter_container").classList.add("position4");
+  // document.querySelector("#japbomber_container").classList.add("position5");
 }
 
-function clickCoin() {
-  console.log("Click coin");
-  // Brug en coin variabel i stedet for gentagne querySelectors
-  const coin = this; // document.querySelector("#japfighter_container");
+function clickPlane() {
+  console.log("Click plane");
+  // Brug en plane variabel i stedet for gentagne querySelectors
+  const plane = this; // document.querySelector("#japfighter_container");
 
   // Forhindr gentagne clicks
-  coin.removeEventListener("click", clickCoin);
+  plane.removeEventListener("click", clickPlane);
 
-  // Stop coin container
-  coin.classList.add("paused");
+  // Stop plane container
+  plane.classList.add("paused");
 
   // sæt forsvind-animation på sprite
-  coin.querySelector("img").classList.add("spiral");
+  plane.querySelector("img").classList.add("spiral");
 
-  // når forsvind-animation er færdig: coinGone
-  coin.addEventListener("animationend", coinGone);
+  // når forsvind-animation er færdig: planeGone
+  plane.addEventListener("animationend", planeGone);
 
-  // Genstart mønt-lyd
-  document.querySelector("#sound_plus").currentTime = 0;
-  // Afspil mønt-lyd
-  document.querySelector("#sound_plus").play();
+  // Genstart nedskydning-lyd
+  document.querySelector("#sound_gunShot").currentTime = 0;
+  // Afspil nedskydning-lyd
+  document.querySelector("#sound_gunShot").play();
 
   // Giv point
   incrementPoints();
 }
 
-function coinGone() {
-  console.log("coin gone");
-  // Brug en coin variabel i stedet for gentagne querySelectors
-  const coin = this; //document.querySelector("#japfighter_container");
+function planeGone() {
+  console.log("plane gone");
+  // Brug en plane variabel i stedet for gentagne querySelectors
+  const plane = this; //document.querySelector("#japfighter_container");
   // fjern event der bringer os herind
-  coin.removeEventListener("animationend", coinGone);
+  plane.removeEventListener("animationend", planeGone);
 
   // fjern forsvind-animation på sprite
-  coin.querySelector("img").classList.remove("spiral");
+  plane.querySelector("img").classList.remove("spiral");
 
   // fjern pause
-  coin.classList.remove("paused");
+  plane.classList.remove("paused");
 
   if (isGameRunning) {
-    coinRestart.call(this);
+    planeRestart.call(this);
   }
 
-  // gør det muligt at klikke på coin igen
-  coin.addEventListener("click", clickCoin);
+  // gør det muligt at klikke på plane igen
+  plane.addEventListener("click", clickPlane);
+
+  // mist point
+  // decrementPoints();
 }
 
-function coinRestart() {
-  console.log("coin restart");
-  const coin = this;
+function planeRestart() {
+  console.log("plane restart");
+  const plane = this;
 
   // genstart flying animation
-  coin.classList.remove("flying");
-  coin.offsetWidth;
-  coin.classList.add("flying");
+  plane.classList.remove("flying");
+  plane.offsetWidth;
+  plane.classList.add("flying");
 
   // fjern alle positioner
-  coin.classList.remove(
+  plane.classList.remove(
     "position1",
     "position2",
     "position3",
@@ -170,40 +186,40 @@ function coinRestart() {
 
   // sæt position til en ny klasse
   const p = Math.ceil(Math.random() * 5);
-  coin.classList.add(`position${p}`);
+  plane.classList.add(`position${p}`);
 }
 
-function clickBomb() {
-  console.log("Click bomb");
+function clickAlly() {
+  console.log("Click ally plane");
   // Forhindr gentagne clicks
   document
     .querySelector("#usfighter_container")
-    .removeEventListener("click", clickBomb);
+    .removeEventListener("click", clickAlly);
 
-  // Stop coin container
+  // Stop plane container
   document.querySelector("#usfighter_container").classList.add("paused");
 
-  // sæt forsvind-animation på coin
+  // sæt forsvind-animation på plane
   document.querySelector("#usfighter_sprite").classList.add("zoom_in");
 
-  // når forsvind-animation er færdig: coinGone
+  // når forsvind-animation er færdig: planeGone
   document
     .querySelector("#usfighter_container")
-    .addEventListener("animationend", bombGone);
+    .addEventListener("animationend", allyGone);
 
-  // Genstart bombe-lyd
+  // Genstart ally-lyd
   document.querySelector("#sound_wrong").currentTime = 0;
-  // Afspil bombe-lyd
+  // Afspil ally-lyd
   document.querySelector("#sound_wrong").play();
 
   decrementLives();
 }
 
-function bombGone() {
+function allyGone() {
   // fjern event der bringer os herind
   document
     .querySelector("#usfighter_container")
-    .removeEventListener("animationend", bombGone);
+    .removeEventListener("animationend", allyGone);
 
   // fjern forsvind-animation
   document.querySelector("#usfighter_sprite").classList.remove("zoom_in");
@@ -217,10 +233,10 @@ function bombGone() {
     document.querySelector("#usfighter_container").offsetWidth;
     document.querySelector("#usfighter_container").classList.add("flying");
 
-    // gør det muligt at klikke på bomb igen
+    // gør det muligt at klikke på ally igen
     document
       .querySelector("#usfighter_container")
-      .addEventListener("click", clickBomb);
+      .addEventListener("click", clickAlly);
   }
 }
 
@@ -247,20 +263,9 @@ function decrementLives() {
   lives--;
 }
 
-function incrementLives() {
-  console.log("få et liv");
-  lives++;
-  showIncrementedLives();
-}
-
 function showDecrementedLives() {
   document.querySelector("#heart" + lives).classList.remove("full_heart");
   document.querySelector("#heart" + lives).classList.add("broken_heart");
-}
-
-function showIncrementedLives() {
-  document.querySelector("#heart" + lives).classList.remove("broken_heart");
-  document.querySelector("#heart" + lives).classList.add("full_heart");
 }
 
 function gameOver() {
@@ -268,7 +273,7 @@ function gameOver() {
   document.querySelector("#game_over").classList.remove("hidden");
   stopGame();
   document.querySelector("#sound_game_over").play();
-  // vis antal points / mønter
+  // vis antal points / nedskydte fly
   document.querySelector("#game_over_planes").textContent = points;
 }
 
@@ -278,8 +283,8 @@ function levelComplete() {
   stopGame();
   // Afspil tada-lyd
   document.querySelector("#sound_victory").play();
-  // vis antal points / mønter
-  document.querySelector("#level_complete_coins").textContent = points;
+  // vis antal points / nedskydte fly
+  document.querySelector("#level_complete_planes").textContent = points;
 }
 
 function startTimer() {
@@ -295,7 +300,7 @@ function startTimer() {
 function timeIsUp() {
   console.log("Tiden er gået!");
 
-  if (points >= 20) {
+  if (points >= 30) {
     levelComplete();
   } else {
     gameOver();
@@ -308,21 +313,29 @@ function stopGame() {
   document.querySelector("#japfighter_container").classList.remove("flying");
   document.querySelector("#japfighter2_container").classList.remove("flying");
   document.querySelector("#japfighter3_container").classList.remove("flying");
+  document.querySelector("#japfighter4_container").classList.remove("flying");
   document.querySelector("#usfighter_container").classList.remove("flying");
+  // document.querySelector("#japbomber_container").classList.remove("flying");
 
   // Fjern click
   document
     .querySelector("#japfighter_container")
-    .removeEventListener("click", clickCoin);
+    .removeEventListener("click", clickPlane);
   document
     .querySelector("#japfighter2_container")
-    .removeEventListener("click", clickCoin);
+    .removeEventListener("click", clickPlane);
   document
     .querySelector("#japfighter3_container")
-    .removeEventListener("click", clickCoin);
+    .removeEventListener("click", clickPlane);
+  document
+    .querySelector("#japfighter4_container")
+    .removeEventListener("click", clickPlane);
   document
     .querySelector("#usfighter_container")
-    .removeEventListener("click", clickBomb);
+    .removeEventListener("click", clickAlly);
+  // document
+  //   .querySelector("#japbomber_container")
+  //   .removeEventListener("dblclick", clickPlane2);  
 
   // Stop og nulstil lyde, fx baggrundsmusik
   document.querySelector("#sound_battle").pause();
