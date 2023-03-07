@@ -8,11 +8,11 @@ let isGameRunning = false;
 
 function ready() {
   console.log("JavaScript ready!");
-  document.querySelector("#btn_start").addEventListener("click", startGame);
-  document.querySelector("#btn_restart").addEventListener("click", startGame);
+  document.querySelector("#btn_start").addEventListener("onmousedown", startGame);
+  document.querySelector("#btn_restart").addEventListener("onmousedown", startGame);
   document
     .querySelector("#btn_go_to_start")
-    .addEventListener("click", showStartScreen);
+    .addEventListener("onmousedown", showStartScreen);
 }
 
 function showGameScreen() {
@@ -63,22 +63,22 @@ function startGame() {
   // start timer
   startTimer();
 
-  // Registrer click
+  // Registrer onmousedown
   document
     .querySelector("#japfighter_container")
-    .addEventListener("click", clickPlane);
+    .addEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter2_container")
-    .addEventListener("click", clickPlane);
+    .addEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter3_container")
-    .addEventListener("click", clickPlane);
+    .addEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter4_container")
-    .addEventListener("click", clickPlane);
+    .addEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#usfighter_container")
-    .addEventListener("click", clickAlly);
+    .addEventListener("onmousedown", onmousedownAlly);
 
   // Registrer når flyene rammer højre side
   document
@@ -116,13 +116,13 @@ function startAllAnimations() {
   // document.querySelector("#japbomber_container").classList.add("position5");
 }
 
-function clickPlane() {
-  console.log("Click plane");
+function onmousedownPlane() {
+  console.log("onmousedown plane");
   // Brug en plane variabel i stedet for gentagne querySelectors
   const plane = this; // document.querySelector("#japfighter_container");
 
-  // Forhindr gentagne clicks
-  plane.removeEventListener("click", clickPlane);
+  // Forhindr gentagne onmousedowns
+  plane.removeEventListener("onmousedown", onmousedownPlane);
 
   // Stop plane container
   plane.classList.add("paused");
@@ -160,7 +160,7 @@ function planeGone() {
   }
 
   // gør det muligt at klikke på plane igen
-  plane.addEventListener("click", clickPlane);
+  plane.addEventListener("onmousedown", onmousedownPlane);
 
   // mist point
   // decrementPoints();
@@ -189,12 +189,12 @@ function planeRestart() {
   plane.classList.add(`position${p}`);
 }
 
-function clickAlly() {
-  console.log("Click ally plane");
-  // Forhindr gentagne clicks
+function onmousedownAlly() {
+  console.log("onmousedown ally plane");
+  // Forhindr gentagne onmousedowns
   document
     .querySelector("#usfighter_container")
-    .removeEventListener("click", clickAlly);
+    .removeEventListener("onmousedown", onmousedownAlly);
 
   // Stop plane container
   document.querySelector("#usfighter_container").classList.add("paused");
@@ -236,7 +236,7 @@ function allyGone() {
     // gør det muligt at klikke på ally igen
     document
       .querySelector("#usfighter_container")
-      .addEventListener("click", clickAlly);
+      .addEventListener("onmousedown", onmousedownAlly);
   }
 }
 
@@ -317,25 +317,25 @@ function stopGame() {
   document.querySelector("#usfighter_container").classList.remove("flying");
   // document.querySelector("#japbomber_container").classList.remove("flying");
 
-  // Fjern click
+  // Fjern onmousedown
   document
     .querySelector("#japfighter_container")
-    .removeEventListener("click", clickPlane);
+    .removeEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter2_container")
-    .removeEventListener("click", clickPlane);
+    .removeEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter3_container")
-    .removeEventListener("click", clickPlane);
+    .removeEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#japfighter4_container")
-    .removeEventListener("click", clickPlane);
+    .removeEventListener("onmousedown", onmousedownPlane);
   document
     .querySelector("#usfighter_container")
-    .removeEventListener("click", clickAlly);
+    .removeEventListener("onmousedown", onmousedownAlly);
   // document
   //   .querySelector("#japbomber_container")
-  //   .removeEventListener("dblclick", clickPlane2);  
+  //   .removeEventListener("dblonmousedown", onmousedownPlane2);  
 
   // Stop og nulstil lyde, fx baggrundsmusik
   document.querySelector("#sound_battle").pause();
