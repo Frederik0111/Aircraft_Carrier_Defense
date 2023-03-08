@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    user-select: none;
 }
 
 h2 {
@@ -125,7 +126,7 @@ p {
 
 /* #japbomber_container {
     position: absolute;
-    top: 25vw;
+    top: 0;
 }
 
 #japbomber_sprite {
@@ -153,6 +154,7 @@ p {
 }
 
 /* position classes */
+
 .position1 {
     top: 10vw;
 }
