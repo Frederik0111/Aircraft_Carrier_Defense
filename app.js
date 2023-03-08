@@ -8,11 +8,11 @@ let isGameRunning = false;
 
 function ready() {
   console.log("JavaScript ready!");
-  document.querySelector("#btn_start").addEventListener("onmousedown", startGame);
-  document.querySelector("#btn_restart").addEventListener("onmousedown", startGame);
+  document.querySelector("#btn_start").addEventListener("click", startGame);
+  document.querySelector("#btn_restart").addEventListener("click", startGame);
   document
     .querySelector("#btn_go_to_start")
-    .addEventListener("onmousedown", showStartScreen);
+    .addEventListener("click", showStartScreen);
 }
 
 function showGameScreen() {
@@ -342,7 +342,7 @@ function stopGame() {
   document
     .querySelector("#usfighter_container")
     .removeEventListener("mousedown", mousedownAlly);
-    
+
   // Stop og nulstil lyde, fx baggrundsmusik
   document.querySelector("#sound_battle").pause();
   document.querySelector("#sound_battle").currentTime = 0;
