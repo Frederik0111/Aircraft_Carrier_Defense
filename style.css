@@ -124,16 +124,6 @@ p {
     transform: rotate(90deg);
 }
 
-/* #japbomber_container {
-    position: absolute;
-    top: 0;
-}
-
-#japbomber_sprite {
-    width: 200%;
-    transform: rotate(90deg);
-} */
-
 #usfighter_container {
     position: absolute;
     top: 15vw;
